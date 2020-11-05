@@ -10,7 +10,7 @@ import Entity.Rating;
 public class RatingsDAO {
 	private Connection connection;
 
-	private final String CREATE_NEW_RATING_QUERY = "INSERT INTO ratings(show_no, viewer_count (?,?)";
+	private final String CREATE_NEW_RATING_QUERY = "INSERT INTO ratings values (?, ?)";
 	private final String DELETE_RATING_BY_SHOW_NO = "DELETE FROM ratings WHERE show_number = ? ";
 	private final String DISPLAY_RATING_BY_SHOWNO = " SELECT * FROM ratings WHERE show_no = ?";
 	private final String UPDATE_RATING_BY_SHOWNO = "UPDATE ratings SET viewer_count = ? WHERE show_id = ?";
