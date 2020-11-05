@@ -24,11 +24,11 @@ public class EmployeesDAO {
 	}
 	
 	// READ
-	//This method returns an Employee copied from 'employees' table, whose ID matches argument
-	public Employee getEmployeeByID(int id) throws SQLException {
+	//This method returns an Employee copied from 'employees' table, whose emp_no matches search_no argument
+	public Employee getEmployeeByID(int search_no) throws SQLException {
 		
 		PreparedStatement ps = connection.prepareStatement(GET_EMPLOYEE_QUERY);
-		ps.setInt(1, id);
+		ps.setInt(1, search_no);
 		ResultSet rs = ps.executeQuery();
 		Employee employee = null;
 		while (rs.next()) {
@@ -67,6 +67,7 @@ public class EmployeesDAO {
 		// first_name (inserted first_name)
 		// last_name (inserted last_name)
 		// title (inserted title)
+	// returns: true on success, false on fail
 	public boolean insertEmployee(int emp_no, String first_name, String last_name, String title) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(INSERT_EMPLOYEE_QUERY);
 		ps.setInt(1, emp_no);
@@ -84,11 +85,12 @@ public class EmployeesDAO {
 	}
 	
 	// DELETE
-	// This method deletes employee with id argument from employee table
-	// requires search_id (emp_no to search for)
-	public boolean deleteEmployee(int search_id) throws SQLException {
+	// This method deletes employee with search_no argument from employee table
+	// requires search_no (emp_no to search for)
+	// returns: true on success, false on fail
+	public boolean deleteEmployee(int search_no) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(DELETE_EMPLOYEE_QUERY);
-		ps.setInt(1, search_id);
+		ps.setInt(1, search_no);
 		
 		if (ps.executeUpdate() == 1) {
 			return true;
@@ -106,7 +108,7 @@ public class EmployeesDAO {
 		// updated_first_name (updated first_name)
 		// updated_last_name (updated last_name)
 		// updated_title (updated title)
-	
+	// returns: true on success, false on fail
 	public boolean updateEmployee(int search_emp_no, int updated_emp_no, String updated_first_name, String updated_last_name, String updated_title) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(UPDATE_EMPLOYEE_QUERY);
 		ps.setInt(1, updated_emp_no);
