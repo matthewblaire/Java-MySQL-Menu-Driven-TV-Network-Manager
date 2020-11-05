@@ -8,5 +8,6 @@ public class RatingsDAO {
 	public RatingsDAO() {
 		connection = DBConnection.getConnection();
 
+
 	}
 }
