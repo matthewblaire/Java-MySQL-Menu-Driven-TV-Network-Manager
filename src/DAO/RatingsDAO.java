@@ -17,7 +17,6 @@ public class RatingsDAO {
 
 	public RatingsDAO() {
 		connection = DBConnection.getConnection();
-
 	}
 
 	public void createNewRating(int show_no, int viewer_count) throws SQLException {
