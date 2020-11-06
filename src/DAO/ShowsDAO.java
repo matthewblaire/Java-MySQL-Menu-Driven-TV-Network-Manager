@@ -43,7 +43,7 @@ public class ShowsDAO {
 	
 	// READ
 	//This method returns a list of type Show, containing all shows in the shows table
-	public List<Show> getAllEmployees() throws SQLException {
+	public List<Show> getAllShows() throws SQLException {
 		List<Show> listOfShows = new ArrayList<Show>();
 		Statement s = connection.createStatement();
 		ResultSet rs = s.executeQuery(SELECT_ALL_SHOWS_QUERY);
