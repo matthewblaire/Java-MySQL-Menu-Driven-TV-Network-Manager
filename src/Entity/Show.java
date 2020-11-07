@@ -1,3 +1,5 @@
+// By Matthew Blaire
+
 package Entity;
 
 public class Show {

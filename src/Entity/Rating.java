@@ -1,3 +1,4 @@
+// By Andrew Liam, Britney Hanna, Matthew Blaire
 package Entity;
 
 public class Rating {

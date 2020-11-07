@@ -1,3 +1,5 @@
+// By Matthew Blaire
+
 package Application;
 
 import java.sql.SQLException;
@@ -58,6 +60,7 @@ public class Menu {
 				// update show time slot
 	}
 	
+	// this method handles the menu logic
 	private void options(int choice) throws SQLException {
 		if (choice == 1) {
 			
@@ -166,6 +169,7 @@ public class Menu {
 		}
 	}
 	
+	// this method returns a scanned int from the user
 	private int scanInt() {
 		
 		Scanner s = new Scanner(System.in);
@@ -174,6 +178,7 @@ public class Menu {
 		
 	}
 	
+	// this method returns a scanned string from the user
 	private String scanString() {
 		
 		Scanner s = new Scanner(System.in);
@@ -182,6 +187,7 @@ public class Menu {
 		
 	}
 	
+	// this method prints a list of all employees to console, from employees table
 	private void showAllEmployees() throws SQLException {
 		
 		List<Employee> employeeList= eDAO.getAllEmployees();
@@ -213,6 +219,7 @@ public class Menu {
 		}
 	}
 	
+	// this method displays all shows formatted with show_no, title, time_slot, and viewer count
 	private void displayAllShowsWithRatings() throws SQLException {
 		
 		List<Show> shows = sDAO.getAllShows();
@@ -222,6 +229,7 @@ public class Menu {
 		}
 	}
 	
+	// this method displays a single show formatted with show_no, title, time_slot, and viewer count
 	private void displayShowByShowNumber(int show_no) throws SQLException {
 		
 		Show show = sDAO.getShowByID(show_no);
@@ -230,6 +238,7 @@ public class Menu {
 	
 	}
 	
+	// this method inserts a show to the shows table
 	private void createShow(int show_no, String show_title, String time_slot) throws SQLException {
 		
 		sDAO.insertShow(show_no, show_title, time_slot);
@@ -237,6 +246,7 @@ public class Menu {
 		
 	}
 	
+	// this method removes a show 
 	private void cancelShow(int show_no) throws SQLException {
 		
 		rDAO.deleteRatingByShowNumber(show_no);
@@ -245,38 +255,45 @@ public class Menu {
 		
 	}
 	
+	// this method updates the viewer count of a show in the ratings table
 	private void updateViewersByShowNumber(int show_no, int viewer_count) throws SQLException{
 		
 		rDAO.updateRatingByShowNumber(show_no, viewer_count);
 		
 	}
 	
+	// this method adds an employee to a project in the employee_projects table
 	private void addEmployeeToProject(int emp_no, int show_no) throws SQLException {
 		
 		epDAO.insertEmployeeProject(emp_no, show_no);
 	}
 	
+	//this method removes an employee from a project in the employee_projects table
 	private void removeEmployeeFromProject(int emp_no, int show_no) throws SQLException {
 		
 		epDAO.removeEmployeeFromProject(emp_no, show_no);
 	}
 	
+	// this method updates the time slot of a show in the shows table
 	private void updateTimeSlotByShowNumber(int show_no, String time_slot) throws SQLException {
 		
 		sDAO.updateTimeSlot(show_no, time_slot);
 		
 	}
 	
+	// this method inserts an employee to the employees table
 	private void hireEmployee(int emp_no, String first_name, String last_name, String title) throws SQLException {
 		
 		eDAO.insertEmployee(emp_no, first_name, last_name, title);
 	
 	}
 	
+	// this method deletes an employee from the employees table
 	private void fireEmployee(int emp_no) throws SQLException {
 		
+		epDAO.deleteEmployeeByEmpNo(emp_no);
 		eDAO.deleteEmployee(emp_no);
-	
+		
 	}
 	
 }
