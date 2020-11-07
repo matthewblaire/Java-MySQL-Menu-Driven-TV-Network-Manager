@@ -18,7 +18,7 @@ public class ShowsDAO {
 	private static final String SELECT_SHOW_QUERY = "select * from shows where show_no = ?";
 	private static final String UPDATE_SHOW_QUERY = "update shows set show_no = ?, show_title = ?, time_slot = ?  where show_no = ?";
 	private static final String DELETE_SHOW_QUERY = "delete from shows where show_no = ?";
-	
+	private static final String UPDATE_TIME_SLOT_QUERY = "update shows set time_slot = ? where show_no = ?";
 	
 	public ShowsDAO() {
 		connection = DBConnection.getConnection();
@@ -121,5 +121,16 @@ public class ShowsDAO {
 		}
 		
 	}
+	
+	public void updateTimeSlot(int search_show_no, String updated_time_slot) throws SQLException {
+		
+		PreparedStatement ps = connection.prepareStatement(UPDATE_TIME_SLOT_QUERY);
+		ps.setString(1, updated_time_slot);
+		ps.setInt(2, search_show_no);
+		ps.executeUpdate();
+		
+	}
+	
+	
 	
 }

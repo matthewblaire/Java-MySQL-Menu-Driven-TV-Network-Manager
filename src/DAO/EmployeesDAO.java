@@ -93,9 +93,13 @@ public class EmployeesDAO {
 		ps.setInt(1, search_no);
 		
 		if (ps.executeUpdate() == 1) {
+			
 			return true;
+			
 		} else {
+			
 			return false;
+			
 		}
 		
 	}
@@ -110,6 +114,7 @@ public class EmployeesDAO {
 		// updated_title (updated title)
 	// returns: true on success, false on fail
 	public boolean updateEmployee(int search_emp_no, int updated_emp_no, String updated_first_name, String updated_last_name, String updated_title) throws SQLException {
+		
 		PreparedStatement ps = connection.prepareStatement(UPDATE_EMPLOYEE_QUERY);
 		ps.setInt(1, updated_emp_no);
 		ps.setString(2, updated_first_name);
